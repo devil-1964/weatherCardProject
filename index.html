@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="./script.js"></script>
+</head>
+
+<body class="bg-gradient-to-b from-peach to-orange-200 bg-no-repeat min-h-screen flex justify-center items-center">
+    <div class=" text-white rounded-lg  bg-burntOrange  flex p-6 flex-col flex-wrap space-y-4 shadow-md">
+        <div class="flex flex-nowrap mx-auto place-content-center align-middle space-x-2">
+            <input autocomplete="off" id="input" placeholder="Enter Your City" type="text"
+                class=" text-center w-fit h-6 rounded-xl font-mono font-medium shadow-md text-black focus:outline-none p-2 text-xs">
+            <button onclick="onBtn()" id="btn" class="rounded-full shadow-md bg-white h-6 w-6 my-auto"><img class="w-3 mx-auto"
+                id="weatherImage"   src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAACE0lEQVR4nO2YwU7UUBSGP9wyccmGBcPEOCwBw0o0PsNEE8WHAGXRHVN2vokM+ArOuCBu2TkjPgHRFbiAxGTMTU4TcnJGS9vTaUm/5CaTae5/zmnvvf1PoaGhIQubwCEwAsbAbxnh9xCIgQ0qxgLwEpgA05QjFNSTuXNlFfh6h8T1OAVW5pX8U+AiR/LJ+AW8KDv558CNkcw18BF4DXSBRRld+e/oH/O2y1w2P40kBkA75fxjY/5Fyvm5WDDW/B9gN4PWnszVe8KVV8ady5J8wntDL5xObnd/YiybvJwozW848UQFCpuxU4BuWzbxbe11HDhUQcJpUxQDpd3HgZEKEo7FothR2p9x4FwFeVSgdldpT3DgSgVpFajdUtpXOHDpWMBDpX2JA99VkMcFaq8p7XMcGKogbwrUfqu0RzgQqyDBmHkdowc4sGG8yIIxy0vHcKhbOFmJsQoUXGVePinNM89OrWeYr+Aqs7JfpplD7sypYaffkc2JajsdDooHOLMyo5U8SWnuOsaySVrLZUrimeEgk409EG+zJi+7lvzekWtWS5nYhyVKZLvApt76JBOXUUTb2BN3GUNZNkszrseURE86qbSJn8mc2xt2Ou8ikE6qL35+LK4yfFr8AXyRN+zWjHN+WpUishL9p4gP1ICmiKoQNcupIkTNk6gI0X1/En1qQlTn5K0iapd8QlwXf9TQwJz4C+f4krMFBJOfAAAAAElFTkSuQmCC"></button>
+        </div>
+        <div class="flex flex-row flex-wrap">
+            <div class="flex mx-auto">
+                <img class="w-32"
+                    src="data:image/png;base64,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">
+            </div>
+            <div class=" flex flex-col align-middle my-auto mx-auto text-center">
+                <div class="flex flex-row flex-nowrap">
+                    <p id="degree" class=" text-3xl font-semibold font-mono">22</p>
+                    <p class=" text-3xl font-semibold font-mono">&deg;C</p>
+
+                </div>
+                <p id="city" class=" text-2xl font-semibold font-mono">Bengaluru</p>
+            </div>
+        </div>
+        <div class="flex justify-center flex-wrap">
+            <div class="flex flex-nowrap space-x-1 ">
+                <img class="w-10 h-10 "
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAADnUlEQVR4nO2Yy29PURDHf0W9IyqCoEJDghALC4KFSDQiFkik3qRNJcXewoKgjVfEgjQ22mrKziOVUH149/dnfWR0JL9O5/Z3z7n30shvkklvf+ecmfmeM2fOzJRKNapRjTITsAk4BXQC/cAn4LuyfL/QsZPAxtJMIGChGv0KKAfySwWz4F8YPluVD0UYbvkj0CIy/5bx64C+HAy33As0Fm38PmA0wYCfQDdwGtgGNABzxEWAtcAO4AzwRO+FJ2MU2FuU8YeAH47SL8BlMThAloC7Cow58kRHcxE77xkvUWVFBrkC5IEjV05oT54+P+a4ywWgLgf5dep2doNGMt8JjTZ9jvEHE+YvBo4D94A3wGdl+b4LHAMWJaw9DIwbXT3ArCwATjrHe8GZNxdoS/BpyzKnFahPqe9ElkdqyPH5SW4DrNKXNzRsysu80tH7yMz7EPXY6Qtro80Kx/jBDLH/nQUh/zuhuiUGgE0PLpvxemDAMUoAnQeagPnKm4HhBBD91p00LFfOGYhJzOzFnRTngXbHmFvieo68jion0Wbmr1adlXOasrhPtxNtRh3jp4RVYKdjzLATMhebdY+j3Ugva+XiU2b8iOM2U8IjsET93Pq97PB78/sRs7bVjN8OAWCjyrYqAM4myOlyXHGnjp0zY4fN2l02aoUA+GgWL3UucKfGdPk715FhQU4KBMA8BTgmu+tc5Pn68D39E05DAHwziqc8OilkWNd5LtlpqBwh4IBUdaV/CEB2eV2ojEoCdpfycqGUMvYCr4G3heX4sZe4SAI2AA+VN8QKuWMAnM7dUl/vUpOaDMacftWHrAhioi6470SuR8F1h/RtqqUSeRMTITMp1TgaI9AmalcKsbz0W9cybX4lAZDUY3moUFtcfPXy95wA3KyS7AnfCBW6wAmnXXnUwUbP1hTGl7Xc3BIqvMURdDFnAJ0pAQh3xhT1vWmL+gjjpeFlU+3pWOauCVXS6OT+IuhiVndyKq9yCu4oRaYFXmOrK8vFdk63nIJ7YpU1J/Q0v2qbcFmETKnEQgGMRAFQhXumUSpu9UwbuNs1ttcrN2jDd1ILfZpGcbkQABV3oidCsfB6I0t6Q6Ey+jIBUMWzpGOmTacQ5fuNnEsRANozAzCPXUtCf8jj62a9uFaIGw1HZacpwTQpmDvqGkNa2X3Tb/ntWkK5OJ7C+HF7gjOGmAAxUmXnZ6bxpphp17dhTLlXfyvGbWpUo/+EfgEFDI6Dn1aqYQAAAABJRU5ErkJggg==">
+                <div class="flex flex-col">
+                    <div id="humidity" class=" text-2xl font-medium font-mono ">
+                        53%
+                    </div>
+                    <div class="font-mono font-thin">
+                        Humidity
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-nowrap space-x-1">
+                <img class="w-10 h-10 "
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAACr0lEQVR4nO2ZzW9MURjGT1WrTUbSxiApYeEjlIWIb1ZCItEVCVELhGgkNhKCTJQFYlEixIogqK8NbTFCLFSZP+snb/pMcnLTmZ7p3DvulfskbzIz58x7nud8vuc9zuXI0XoA84DFQNE+u6wA2A7cBSaBiuw7MAysdGkF0AFc8Uj/AF4Ao56YKeCISyOAayJZBg6YIK+sAJz0hBx2aQKwTcQmgKV16m0BfklI3xza6QE2A3uAjcDCpsnL8SLN8XUBdYck9mKg7zZgL/AY+ONNUbPfwENgRyxCAgkVReRDQN1u4KZH+DPwQJ01Anz1ym4BXa0SMSERHXXqFLQJVICPwH5gfqROO7BP5RWNUmcrBIxJQM0eU49WSfUGrI2nqn85EdKRKWRzd7xOnT5vRys24LesjlkVK+lIQ+dE7tIsp/ggsL5B34PyfTUWsjM0sFPb6E9geQL+e0M3iEYd24I8q5PYeuhQrA14MPJqo6vW0J7XAguxO8AT7wSeTPoUZjp0sbZ6avWkH6SFWjWYW5EkeYPaMo7tbiYAy4CtgbbJSNd0FjOAfnXYM5dFALcl4JjLGoABL6AsuKyA6WDvqHY4OyB3u4yQXgIcBJ6r5+18GZjtjwuAV8C3f2xTkV3OOG0IUd4JvEyBgDLwGijpctMW4wDnyPF/g8ZCiVDrD724NIUmgrlQewccT+xyTuPhdKhZhuG9J+RNqtOQtQCsAR6FJMlSC43yDYm457IIWwNermetyyKAUxJw2mURwC4JuO6yCIvrJaDksgjgjASccGmB0uQX6iV1vbC9uohXuxReuku1Hv60jQ6r3ohLE+xgAr6I3P3oFmnf9WBh5Z/sldOlDTYlFPNUw4ZxpcbHIjFR4kmwOUMvLxa0vY0Ec6P6PflHirigBWshendsTnPkcLHiL1e5FxWQB9YKAAAAAElFTkSuQmCC">
+                <div class="flex flex-col">
+                    <div id="windSpeed" class="text-2xl font-medium font-mono tracking-tighter">
+                        5.6 km/h
+                    </div>
+                    <div class="font-mono font-thin ">
+                        Wind speed
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
