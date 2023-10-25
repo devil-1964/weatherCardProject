@@ -1,3 +1,4 @@
+const apiKey="Add your key here"
 document.addEventListener("DOMContentLoaded", () => {
   const input = document.getElementById("input");
   const city = document.getElementById("city");
@@ -37,7 +38,7 @@ function onBtn() {
 const fetchData = async (value) => {
   try {
     const response = await fetch(
-      `http://api.weatherapi.com/v1/current.json?key=7b0f965e60db490c8f1113518232510&api=yes&q=${value}`
+      `http://api.weatherapi.com/v1/current.json?key=${apiKey}&api=yes&q=${value}`
     );
     const jsonData = await response.json();
     return jsonData;
