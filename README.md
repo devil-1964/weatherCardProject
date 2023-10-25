@@ -10,3 +10,7 @@ I made a weather card using HTML, CSS, Tailwind, and Javascript. It is a project
 ## Working
 I just used Javascript DOM to change the *innerHTML* which I got from the API data.
 
+**Links** 
+- [https://www.weatherapi.com/](https://www.weatherapi.com/) for API
+- [https://icons8.com/icons](https://icons8.com/icons) for Icons
+
